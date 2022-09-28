@@ -11,6 +11,10 @@ node 'master.puppet.vm1' {
 
 node /^web/ {
   include role::app_server
+  file { '/root/README':
+    ensure => file,
+    content => "Welcome to my puppet program \n VM name : ${fqdn}\nVM IP Address : ${ipaddress}",
+  }
 }
 
 node /^db/ {
